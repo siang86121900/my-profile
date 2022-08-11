@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./image/title-icon.png" type="image/png" sizes="32x32">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/fontello.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.8.5/css-doodle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="./js/t.js"></script>
+    <script src="./js/main.js"></script>
+    <title>Zhi-Xiang, Zhang</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="cover-photo-wrapper">
+
+        </div>
+        <div class="info-area">
+            <img src="./image/profile-photo.jpg" alt="profile-photo" class="profile-photo">
+            <div class="social-media">
+                <a href="https://www.instagram.com/?hl=zh-tw" class="instagram" target="_blank"><i
+                        class="bi bi-instagram"></i></a>
+                <a href="https://github.com/siang86121900" class="github" target="_blank"><i
+                        class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/james-chang-3642591aa/" class="linkedin" target="_blank"><i
+                        class="bi bi-linkedin"></i></a>
+            </div>
+            <div class="name-area">
+                <h1 class="name">張智翔(Zhi-Xiang, Zhang)<i class="icon-official"></i></h1>
+            </div>
+            <div class="description">
+                一個愛大海、愛露營的人<br>
+                一個因看了「 塩田千春：顫動的靈魂 」展覽，而愛上看展的人<br>
+                一個因打工換宿，而愛上潛水的人
+            </div>
+            <div class="addition">
+                <a href="" class="location" target="_blank"><i class="bi bi-geo-alt"></i></i>Nantou,
+                    Taiwan</a>
+                <a href="mailto:james1959032900@gmail.com" class="email"><i
+                        class="bi bi-envelope"></i>&nbsp;james1959032900@gmail.com</a>
+                <br>
+                <a href="" class="calendar" target="_blank"><i class="bi bi-calendar2-date"></i>出生於 1997/12/19</a>
+                <!-- <div class="custom-control custom-switch dark-mode-switch">
+                    <input type="checkbox" class="custom-control-input" id="dark-mode" checked @click="switchDarkMode">
+                    <label class="custom-control-label dark-mode-label" for="dark-mode"
+                       >深色模式</label>
+                </div> -->
+            </div>
+            <!-- <div class="following-area">
+                <a href="" class="following" >{{following}} 位追縱中</a>
+                <a href="" class="follower" >{{follower}} 位追蹤者</a>
+            </div> -->
+        </div>
+        <div class="tabs">
+            <div class="work" @click="nowTab='work'">作品</div>
+            <div class="about" @click="nowTab='about'">關於我</div>
+        </div>
+        <hr>
+        <div class="content">
+            <div class="work-container" v-if="nowTab == 'work'">
+                <div class="work-wrapper" v-for="work in workData">
+                    <img src="./image/profile-photo.jpg" alt="post-profile-photo" class="post-profile-photo">
+                    <div class="work-info">
+                        <div class="name">張智翔(Zhi-Xiang, Zhang)</div>
+                        <br>
+                        <span class="work-title">{{work.title}}</span>
+                    </div>
+                    <div class="work-description">
+                        {{work.desc}}
+                        <a :href="reference.url" class="work-reference" v-for="reference in work.references"
+                            target="_blank">參考資料：{{reference.item}}</a>
+                        <br>
+                        <a href="" class="hashtag" v-for="hashtag in work.hashtags">#{{hashtag}}&nbsp;</a>
+                    </div>
+                    <a :href="work.url" target="_blank"><img :src="work.imgPath" alt="" class="work-cover"></a>
+                    <!-- <div class="social-panel">
+                        <a href="" class="comment"><i class="icon-comment"></i>2</a>
+                        <a href="" class="recycle"><i class="icon-recycle"></i>2</a>
+                        <a href="" class="heart"><i class="icon-heart"></i>2</a>
+                        <a href="" class="share"><i class="icon-share"></i></a>
+                    </div> -->
+                    <hr :class="{'normal-borderColor': darkMode == 'off'}">
+                </div>
+            </div>
+            <div class="about-container" v-if="nowTab == 'about'">
+                <section class="intro">
+                    <div class="container-timeline">
+                        <h1 class="title-timeline">Timeline About Me!</h1>
+                    </div>
+                </section>
+                <section class="timeline">
+                    <ul>
+                        <li>
+                            <div>
+                                <time>1997/12</time>生於台中市。
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2016/06</time>畢業於南投旭光高中。
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2017/06</time>開始在7-11打工。
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2019/9</time>開始在中投有線電視股份有限公司擔任實習生。負責使用Autocad畫有關於光纖網路及同軸線路的路勘圖及
+                                寫工程資本
+                            </div>
+                        <li>
+                            <div>
+                                <time>2020/06</time>於南開科技大學畢業，並結束在中投有線電視股份有限公司實習的工作。
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2020/12</time>結束7-11的工作，並參加了中華職訓教育協會。
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2021/2</time>中華職訓教育協會結訓。並學會了：<br>
+                                <br>・Illustrator、Photoshop的基礎操作<br>
+                                <br>・HTML、CSS、JS、Bootstrap的基本觀念<br>
+                                <br>・PHP、MySQL的基本觀念<br>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2021/03</time>開始在中小金流資訊股份有限公司擔任前端工程師。負責：<br>
+                                <br>・使用HTML、CSS、JS、JQ、bootstrapr進行公司所需官網製作，如：malymaly<br>
+                                <br>・使用 AJAX、JSON 串接第三方 API<br>
+                                <br>・舊版網站翻新<br>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2022/03</time>於中小金流資訊股份有限公司離職。
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2022/07</time>開始墾丁在打工換宿。
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <time>2022/08</time>結束墾丁打工換宿的生活。
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+        <!-- <div class="feather"><a
+                href="https://drive.google.com/file/d/1XvmvwNHS0O9YC8-lHrebhMVmRUPidg76/view?usp=sharing" class="rezume"
+                target="_blank"><img src="./image/ckh-logo-transparent.png" alt="feather" class="add"></a></div>
+        <hr :class="{'normal-borderColor': darkMode == 'off'}"> -->
+        <footer>
+            <div class="copyright">© <a href="" class="chang-ko" target="_blank">Zhi Xiang Zhang</a> 2022 | All Rights
+                Reserved
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
