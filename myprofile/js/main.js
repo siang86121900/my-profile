@@ -64,7 +64,7 @@ window.addEventListener('load', function () {
     window.vm = vm;
 
     //t.js typing effect
-    $('.description').t();
+    // $('.description').t();
 
     //Previous page button
     $('.previous-page-arrow').click(function () {
